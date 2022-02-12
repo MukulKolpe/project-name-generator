@@ -40,7 +40,7 @@ jobs:
         with:
           name: release-apk
           path: build/app/outputs/apk/release/app-release.apk
-          
+
   build_ios:
     name: Flutter Build iOS
     needs: [flutter_test]
@@ -59,7 +59,6 @@ jobs:
           flutter build ios --release --no-codesign
           cd build/ios/iphoneos/
           mkdir Payload
-          ln -s ../Runner.app
           cd ..
           zip -r app.ipa Payload
       - name: release-ios
@@ -82,4 +81,3 @@ jobs:
       - run: flutter pub get
       - run: flutter clean
       - run: flutter build web
-      
