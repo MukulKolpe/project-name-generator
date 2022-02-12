@@ -55,12 +55,7 @@ jobs:
           channel: "stable"
       - run: flutter pub get
       - run: flutter clean
-      - run: |
-          flutter build ios --release --no-codesign
-          cd build/ios/iphoneos/
-          mkdir Payload
-          cd ..
-          zip -r app.ipa Payload
+      - run: flutter build ios --release --no-codesign
       - name: release-ios
         uses: ncipollo/release-action@v1
         with:
