@@ -34,8 +34,13 @@ jobs:
         with:
           channel: "stable"
       - run: flutter pub get
+      - run: flutter format --set-exit-if-changed .
       - run: flutter clean
       - run: flutter build apk --debug --split-per-abi
+      - uses: actions/upload-artifact@v1
+        with:
+          name: release-apk
+          path: build/app/outputs/apk/release/app-release.apk
           
   build_ios:
     name: Flutter Build iOS
@@ -52,3 +57,4 @@ jobs:
       - run: flutter pub get
       - run: flutter clean
       - run: flutter build ios --release --no-codesign
+      
