@@ -35,7 +35,7 @@ jobs:
           channel: "stable"
       - run: flutter pub get
       - run: flutter clean
-      - run: flutter build apk --stacktrace
+      - run: flutter build apk
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
