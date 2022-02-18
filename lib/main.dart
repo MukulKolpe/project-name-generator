@@ -11,13 +11,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Startup Name Generator',
+      title: 'Startup Generator',
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
         ),
-      ),  
+      ),
       home: RandomWords(),
     );
   }
@@ -30,12 +30,12 @@ class RandomWords extends StatefulWidget {
 
 class _RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
-  final _saved = <WordPair>{}; 
+  final _saved = <WordPair>{};
   final _biggerFont = const TextStyle(fontSize: 18);
-  
+
   void _pushSaved() {
-  Navigator.of(context).push(
-    MaterialPageRoute<void>(
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
         builder: (context) {
           final tiles = _saved.map(
             (pair) {
@@ -62,8 +62,8 @@ class _RandomWordsState extends State<RandomWords> {
           );
         },
       ),
-  );
-}
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -107,19 +107,20 @@ class _RandomWordsState extends State<RandomWords> {
         style: _biggerFont,
       ),
       trailing: Icon(
-      alreadySaved ? Icons.favorite : Icons.favorite_border,
-      color: alreadySaved ? Colors.red : null,
-      semanticLabel: alreadySaved ? 'Remove from saved' : 'Save',
-    ), 
-    onTap: () {      // NEW lines from here...
-      setState(() {
-        if (alreadySaved) {
-          _saved.remove(pair);
-        } else { 
-          _saved.add(pair); 
-        } 
-      });
-    },   
+        alreadySaved ? Icons.favorite : Icons.favorite_border,
+        color: alreadySaved ? Colors.red : null,
+        semanticLabel: alreadySaved ? 'Remove from saved' : 'Save',
+      ),
+      onTap: () {
+        // NEW lines from here...
+        setState(() {
+          if (alreadySaved) {
+            _saved.remove(pair);
+          } else {
+            _saved.add(pair);
+          }
+        });
+      },
     );
   }
 }
