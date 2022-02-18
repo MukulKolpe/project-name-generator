@@ -91,6 +91,8 @@ jobs:
           name: release-web
           path: build/web/web-app.zip
       - uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           name: deploy-web
-          path: ./build/web
+          github_token: ${{ secrets.TOKEN }}
+          publish_dir: ./build/web
