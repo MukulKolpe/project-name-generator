@@ -88,5 +88,6 @@ jobs:
           zip -r web-app.zip .
       - uses: peaceiris/actions-gh-pages@v3
         with:
+          needs: "build_web"
           github_token: ${{ secrets.TOKEN }}
           publish_dir: ./build/web
