@@ -79,19 +79,14 @@ jobs:
           java-version: "8.x"
       - uses: subosito/flutter-action@v2
         with:
-          channel: "stable"
+          channel: "all"
       - run: flutter pub get
       - run: flutter clean
       - run: |
           flutter build web
           cd build/web
           zip -r web-app.zip .
-      - uses: actions/upload-artifact@v1
-        with:
-          name: release-web
-          path: build/web/web-app.zip
       - uses: peaceiris/actions-gh-pages@v3
         with:
-          name: deploy-web
           github_token: ${{ secrets.TOKEN }}
           publish_dir: ./build/web
