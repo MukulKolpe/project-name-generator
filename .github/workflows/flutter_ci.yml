@@ -90,3 +90,7 @@ jobs:
         with:
           name: release-web
           path: build/web/web-app.zip
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          name: deploy-web
+          path: ./build/web
