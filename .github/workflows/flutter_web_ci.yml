@@ -1,0 +1,32 @@
+name: Flutter-Web CI
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build_web:
+    name: Flutter Build Web
+    needs: [flutter_test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "8.x"
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - run: flutter pub get
+      - run: flutter clean
+      - run: |
+          flutter build web
+          cd build/web
+          zip -r web-app.zip .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: release-web
+          path: build/web/web-app.zip
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.TOKEN }}
+          publish_dir: ./build/web
