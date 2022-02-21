@@ -63,10 +63,10 @@ jobs:
           ln -s ../Runner.app
           cd ..
           zip -r app.ipa Payload
-      - uses: actions/upload-artifact@v1
+      - uses: ncipollo/release-action@v1
         with:
           name: release-ios
-          path: build/ios/Release-iphoneos/Runner.app
+          artifacts: "build/app/outputs/apk/debug/*,build/ios/iphoneos/app.ipa"
 
   build_web:
     name: Flutter Build Web
