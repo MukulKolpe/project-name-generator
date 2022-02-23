@@ -56,7 +56,7 @@ class _RandomWordsState extends State<RandomWords> {
 
           return Scaffold(
             appBar: AppBar(
-              title: const Text('Saved Suggestions'),
+              title: const Text('Saved Suggestions-'),
             ),
             body: ListView(children: divided),
           );
@@ -74,7 +74,7 @@ class _RandomWordsState extends State<RandomWords> {
           IconButton(
             icon: const Icon(Icons.list),
             onPressed: _pushSaved,
-            tooltip: 'Saved Suggestions',
+            tooltip: 'Saved Suggestions-',
           ),
         ],
       ),
